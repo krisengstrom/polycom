@@ -1,0 +1,101 @@
+@import "variables";
+@import "mixins";
+@import "reset";
+
+//  ==========================================================================
+//  General
+//  ==========================================================================
+body {-webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; font-family:Arial, Helvetica, sans-serif;}
+a {}
+h1 {text-transform:uppercase;}
+h2 {text-transform:uppercase;}
+nav ul {margin:0; padding:0; list-style:none;}
+label {display:block; margin-top:12px;}
+input {border:none; border-radius:4px; outline:none; background:$blue-asphalt; display:block; width:100%;}
+
+//  ==========================================================================
+//  Classes
+//  ==========================================================================
+.container {margin:0 auto; max-width:$containerWidth; width:100%;}
+.group {@include group;}
+.padded {padding:$innerPadding;}
+.center {text-align:center;}
+.right {text-align:right;}
+.relative {position:relative;}
+
+//  ==========================================================================
+//  Grid
+//  ==========================================================================
+.col {box-sizing:border-box; width:100%;
+@include breakpoint(tablet) {margin-left:4%; float:left;
+	&.one {width:4.66666666667%;}
+	&.two {width:13.3333333333%;}
+	&.three {width:22%;}
+	&.four {width:30.6666666667%;}
+	&.five {width:39.3333333333%;}
+	&.six {width:48%;}
+	&.seven {width:56.6666666667%;}
+	&.eight {width:65.3333333333%;}
+	&.nine {width:74.0%;}
+	&.ten {width:82.6666666667%;}
+	&.eleven {width:91.3333333333%;}
+	&.twelve {width:100%; margin-left:0;}
+	&:first-child {margin-left:0;}
+
+	&.offset-by-one {margin-left:8.66666666667%;}
+	&.offset-by-two {margin-left:17.3333333333%;}
+	&.offset-by-three {margin-left:26%;}
+	&.offset-by-four {margin-left:34.6666666667%;}
+	&.offset-by-five {margin-left:43.3333333333%;}
+	&.offset-by-six {margin-left:52%;}
+	&.offset-by-seven {margin-left:60.6666666667%;}
+	&.offset-by-eight {margin-left:69.3333333333%;}
+	&.offset-by-nine {margin-left:78.0%;}
+	&.offset-by-ten {margin-left:86.6666666667%;}
+	&.offset-by-eleven {margin-left:95.3333333333%;}
+}}
+
+//  ==========================================================================
+//  Layout
+//  ==========================================================================
+#site-header {color:#fff; background:#ccc; position:relative;
+	.form {background:$black; padding-bottom:150px; margin-left:0; float:right; position:relative; z-index:2;
+		form {background:$blue-midnight;}
+		h3 {margin:0; padding:$innerPadding $innerPadding 0;}
+		p, label {padding:0 $innerPadding;}
+		button {background:$red; color:#fff; border:none; outline:none; width:100%; height:150px; margin-top:$innerPadding;}
+	}
+	.roadshow-list {position:absolute; bottom:150px; margin:0; padding:0; list-style:none;
+		.col {margin:0; height:150px;}
+		.polycom {background:$black; width:26%}
+		.sin {background:$blue-pale; width:17.3333333333%}
+		.ind {background:$blue-cobalt; width:17.3333333333%}
+		.syd {background:$teal; width:17.3333333333%}
+	}
+}
+#site-main {
+	section {margin-top:$gutterWidth; margin-bottom:$gutterWidth;
+		&.intro {}
+		&.testimonials {background:$blue-pale;}
+	}
+}
+#site-footer {}
+
+
+//  ==========================================================================
+//  Print Styles
+//  ==========================================================================
+@media print {
+	* { background:transparent !important; color:#000 !important; box-shadow:none !important; text-shadow:none !important; filter:none !important; -ms-filter:none !important; } /* Black prints faster:h5bp.com/s */
+	a, a:visited { text-decoration:underline; }
+	a[href]:after { content:" (" attr(href) ")"; }
+	abbr[title]:after { content:" (" attr(title) ")"; }
+	.ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content:""; }  /* Don't show links for images, or javascript/internal links */
+	pre, blockquote { border:1px solid #999; page-break-inside:avoid; }
+	thead { display:table-header-group; } /* h5bp.com/t */
+	tr, img { page-break-inside:avoid; }
+	img { max-width:100% !important; }
+	@page { margin:0.5cm; }
+	p, h2, h3 { orphans:3; widows:3; }
+	h2, h3 { page-break-after:avoid; }
+}
