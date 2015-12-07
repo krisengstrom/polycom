@@ -76,7 +76,9 @@ button {background:$red; text-transform:uppercase; color:#fff; border:none; widt
 //  Layout
 //  ==========================================================================
 #site-header {color:#fff; background:url('../images/header-bg.png') center top no-repeat; background-size:cover; position:relative;
-	.logo {position:absolute; top:-70px; height:60px;}
+	.logo {position:absolute; top:-70px; height:60px;
+		&.cobrand {height:50px; top:-65px;}
+	}
 	.disclaimer {font-size:20px; margin-top:15px;}
 	.form {background:transparent; padding-bottom:$gutterWidth; margin-left:0; float:right; position:relative; z-index:2;
 		form {background:$blue-midnight;
@@ -112,6 +114,13 @@ button {background:$red; text-transform:uppercase; color:#fff; border:none; widt
 		.syd {background:$teal; width:17.3333333333%;
 			&:before {border-left-color:$teal;}
 			span {color:$blue-cobalt;}
+		}
+		.sc-text {width:34.6666666667%; background:$blue-pale; color:$black;
+			&:before {border-left-color:$blue-pale;}
+		}
+		.sc-sin {background:$blue-cobalt; width:17.3333333333%;
+			span {color:$black}
+			&:before {border-left-color:$blue-cobalt;}
 		}
 	}
 }
