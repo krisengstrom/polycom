@@ -7,8 +7,9 @@
 //  ==========================================================================
 body {-webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; font-family:Arial, Helvetica, sans-serif; padding-top:80px; font-size:14px;}
 a {}
-h1 {text-transform:uppercase; margin:80px 0 0; font-size:70px; line-height:60px;
+h1 {text-transform:uppercase; margin:200px 0 0; font-size:70px; line-height:60px;
 	span {font-weight:100;}
+	img {max-width:500px; width:100%;}
 	small {font-size:28px; font-weight:100; display:block; margin-top:20px; line-height:38px;}
 }
 h2 {text-transform:uppercase; margin:0 0 50px; font-size:32px; line-height:40px;}
@@ -20,7 +21,8 @@ dl {
 	dt {float:left; width:80px; font-weight:bold;}
 	dd {margin:18px 0; padding-left:80px;}
 }
-//label {display:block; }
+br {display:none;
+@include breakpoint(tablet) {display:block;}}
 input {border:none; border-radius:4px; outline:none; background:$blue-asphalt; display:block; width:100%; margin:12px 0 0; padding:4px 8px; box-sizing:border-box;}
 button {background:$red; text-transform:uppercase; color:#fff; border:none; width:280px; height:60px;}
 ::-webkit-input-placeholder {color:$blue-midnight;}
@@ -75,11 +77,12 @@ button {background:$red; text-transform:uppercase; color:#fff; border:none; widt
 //  ==========================================================================
 //  Layout
 //  ==========================================================================
-#site-header {color:#fff; background:url('../images/header-bg.png') center top no-repeat; background-size:cover; position:relative;
+#site-header {color:#fff; background:url('../images/header-bg.png') center top no-repeat; background-size:cover; position:relative; min-height:540px;
 	.logo {position:absolute; top:-70px; height:60px;
 		&.cobrand {height:50px; top:-65px;}
 	}
-	.disclaimer {font-size:20px; margin-top:15px;}
+	.twelve {position:absolute; max-width:$containerWidth}
+	.disclaimer {font-size:20px; margin-top:15px; font-weight:bold;}
 	.form {background:transparent; padding-bottom:$gutterWidth; margin-left:0; float:right; position:relative; z-index:2;
 		form {background:$blue-midnight;
 			.inner {padding:0 10px;}
@@ -149,6 +152,10 @@ button {background:$red; text-transform:uppercase; color:#fff; border:none; widt
 			.group {margin:0;}
 			h2 {margin-bottom:10px;}
 			button {margin-top:60px;}
+		}
+		&.confirmation {background:$blue-sky;
+			//&:before {top:-20px; border-color:$blue-sky; border-top-color:transparent; box-shadow:-10px 0 $blue-sky, 10px 0 $blue-sky;}
+			.group {margin:0;}
 		}
 	}
 }
