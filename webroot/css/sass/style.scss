@@ -146,7 +146,9 @@ button {background:$red; text-transform:uppercase; color:#fff; border:none; widt
 		form .inner {padding:0 10px;}
 	}
 	.roadshow-list {position:absolute; bottom:$gutterWidth;
-		.polycom {width:26%; display:block;}
+		.polycom {width:26%; display:block;
+			&.sc {width:26%;}
+		}
 		.sin {width:17.3333333333%;}
 		.ind {width:17.3333333333%;}
 		.syd {width:17.3333333333%;}
