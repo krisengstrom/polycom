@@ -5,13 +5,17 @@
 //  ==========================================================================
 //  General
 //  ==========================================================================
-body {-webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; font-family:Arial, Helvetica, sans-serif; padding-top:80px; font-size:14px;}
+body {-webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; font-family:Arial, Helvetica, sans-serif; padding-top:50px; font-size:14px;
+@include breakpoint(tablet) {padding-top:80px;}}
 a {}
 h1 {text-transform:uppercase; margin:200px 0 0; font-size:70px; line-height:60px;
 	span {font-weight:100;}
-	img {max-width:500px; width:100%;}
-	small {font-size:28px; font-weight:100; display:block; margin-top:20px; line-height:38px;}
-}
+	img {max-width:200px; width:100%;}
+	small {font-size:18px; font-weight:100; display:block; margin-top:20px; line-height:28px; margin-bottom:20px;}
+@include breakpoint(tablet) {
+	img {max-width:500px;}
+	small {font-size:28px; line-height:38px; margin-bottom:0;}
+}}
 h2 {text-transform:uppercase; margin:0 0 50px; font-size:32px; line-height:40px;}
 h3 {color:$blue-pale; margin:0; font-size:20px; margin:20px 0;}
 h4 {margin:0;}
@@ -77,17 +81,20 @@ button {background:$red; text-transform:uppercase; color:#fff; border:none; widt
 //  ==========================================================================
 //  Layout
 //  ==========================================================================
-#site-header {color:#fff; background:url('../images/header-bg.png') center top no-repeat; background-size:cover; position:relative; min-height:540px;
-	.logo {position:absolute; top:-70px; height:60px;
-		&.cobrand {height:50px; top:-65px;}
+#site-header {color:#fff; background:url('../images/header-bg.png') center top no-repeat; background-size:150% auto; position:relative; min-height:540px;
+	.logo {position:absolute; top:-45px; height:40px;
+		&.cobrand {height:26px; top:-40px;}
 	}
-	h1 {margin:200px 20px 0 20px;}
+	h1 {margin:120px 20px 0 20px;}
 	.twelve {position:absolute; max-width:$containerWidth}
+	.nine {margin-bottom:0;}
+
 	.disclaimer {font-size:20px; margin-top:15px; font-weight:bold; margin-left:20px;}
-	.form {background:transparent; margin-left:0; float:right; position:relative; z-index:2; margin-bottom:0;
+	.form {background:transparent; margin-left:0; float:right; margin-bottom:0;
 		form {background:$blue-midnight; 
-			.inner {padding:0 10px;}
+			.inner {padding:0 40px;}
 		}
+		img {position:absolute; top:-50px; right:0; height:50px;}
 		h3 {margin:0; padding:$innerPadding 0 0; text-transform:uppercase; color:#fff;}
 		p {padding:0 0;}
 		label {width:100%; box-sizing:border-box; @include group; display:block; padding-left:40px; position:relative; margin-top:12px;
@@ -98,12 +105,13 @@ button {background:$red; text-transform:uppercase; color:#fff; border:none; widt
 		button {background:$red; color:#fff; border:none; outline:none; width:100%; height:150px; margin-top:$innerPadding; border:25px solid #000; border-top-width: 48px; border-bottom-width: 46px;}
 	}
 	.roadshow-list {margin:0; padding:0; list-style:none;
-		.col {margin:0; height:150px; position:relative; color:#fff; width:25%; float:left;
+		.col {margin:0; height:150px; position:relative; color:#fff; width:33.3333332%; float:left;
 			&:before {content:''; position:absolute; border:10px solid transparent; width:0; height:0; right:-20px; top:50%; margin-top:-10px; z-index:3;}
 			h3 {color:#fff; margin:10px 0;}
 			span {text-transform:uppercase; font-weight:700; font-size:32px; line-height:40px;}
 		}
-		.polycom {background:$black;
+		.polycom {background:$black; display:none;
+			&.sc {display:block; width:50%;}
 			&:before {border-left-color:$black;}
 			span {color:$blue-cobalt;}
 		}
@@ -119,29 +127,35 @@ button {background:$red; text-transform:uppercase; color:#fff; border:none; widt
 			&:before {border-left-color:$teal;}
 			span {color:$blue-cobalt;}
 		}
-		.sc-text {background:$blue-pale; color:$black;
+		.sc-text {background:$blue-pale; color:$black; display:none;
 			&:before {border-left-color:$blue-pale;}
 		}
-		.sc-sin {background:$blue-cobalt;
+		.sc-sin {background:$blue-cobalt; width:50%;
 			span {color:$black}
 			&:before {border-left-color:$blue-cobalt;}
 		}
 	}
-@include breakpoint(tablet) {padding:0;
+@include breakpoint(tablet) {padding:0; background-size:cover;
 	.disclaimer {margin-left:0;}
+	.logo {top:-70px; height:60px;
+		&.cobrand {height:50px; top:-65px;}
+	}
 	h1 {margin:200px 0 0}
-	.form {padding-bottom:$gutterWidth;}
+	.form {padding-bottom:$gutterWidth; position:relative; z-index:2;
+		img {position:static; height:auto}
+		form .inner {padding:0 10px;}
+	}
 	.roadshow-list {position:absolute; bottom:$gutterWidth;
-		.polycom {width:26%;}
+		.polycom {width:26%; display:block;}
 		.sin {width:17.3333333333%;}
 		.ind {width:17.3333333333%;}
 		.syd {width:17.3333333333%;}
-		.sc-text {width:34.6666666667%;}
+		.sc-text {width:34.6666666667%; display:block;}
 		.sc-sin {width:17.3333333333%;}
 	}
 }}
 #site-main {
-	section {padding:$gutterWidth 20px; position:relative; box-sizing:border-box;
+	section {padding:$gutterWidth 40px; position:relative; box-sizing:border-box;
 		&:before {content:''; position:absolute; border:10px solid transparent; width:0; height:0; right:50%; margin-left:-10px; top:0;}
 		.group {margin:0}
 
